@@ -42,6 +42,7 @@ http-server .
 The app uses pre-trained models from `face-api.js`. You need to download these models and place them in a models folder in the root directory.
 
 Go to the face-api.js model directory.
+
 Download the following models:
 - ssdMobilenetv1
 - faceLandmark68Net
@@ -49,7 +50,7 @@ Download the following models:
 - ageGenderNet (optional)
 - faceExpressionNet
 
-After downloading, place these models in the `/models` folder in the project directory.
+After downloading the models from the `/weights` directory (https://github.com/justadudewhohacks/face-api.js), place them in the `/models` folder within your project directory.
 
 ### 4. Run the Application
 
