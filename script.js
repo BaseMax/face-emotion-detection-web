@@ -23,7 +23,7 @@ async function handleImageUpload(event) {
 
     faceapi.matchDimensions(canvas, img);
     const resizedDetections = faceapi.resizeResults(detections, img);
-    canvas?.clear();
+    canvas.getContext('2d').clearRect(0, 0, canvas.width, canvas.height);
     canvas?.drawDetections(resizedDetections);
     canvas?.drawFaceExpressions(resizedDetections);
 
