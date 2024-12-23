@@ -37,4 +37,6 @@ async function handleImageUpload(event) {
 
 document.getElementById('imageUpload').addEventListener('change', handleImageUpload);
 
-window.onload = () => loadModels();
+window.onload = async () => {
+  await loadModels();
+};
