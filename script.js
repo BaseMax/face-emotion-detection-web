@@ -23,9 +23,13 @@ async function handleImageUpload(event) {
 
     faceapi.matchDimensions(canvas, img);
     const resizedDetections = faceapi.resizeResults(detections, img);
+    const detections = await faceapi.detectAllFaces(img).withFaceLandmarks().withFaceExpressions();
+
     canvas.getContext('2d').clearRect(0, 0, canvas.width, canvas.height);
-    canvas?.drawDetections(resizedDetections);
-    canvas?.drawFaceExpressions(resizedDetections);
+
+    faceapi.draw.drawDetections(canvas, detections);
+    faceapi.draw.drawFaceLandmarks(canvas, detections);
+    faceapi.draw.drawFaceExpressions(canvas, detections);
 
     const expressions = detections[0]?.expressions;
     if (expressions) {
