@@ -10,12 +10,14 @@ async function handleImageUpload(event) {
   const file = event.target.files[0];
   if (file) {
     const img = await faceapi.bufferToImage(file);
-    document.querySelector('canvas').style.display = 'block';
-    document.querySelector('canvas').width = img.width;
-    document.querySelector('canvas').height = img.height;
+    const canvasElement = document.querySelector('canvas');
     
+    canvasElement.style.display = 'block';
+    canvasElement.width = img.width;
+    canvasElement.height = img.height;
+
     const canvas = faceapi.createCanvasFromMedia(img);
-    document.body.append(canvas);
+    canvasElement.replaceWith(canvas);
     
     const detections = await faceapi.detectAllFaces(img)
       .withFaceLandmarks()
@@ -26,9 +28,9 @@ async function handleImageUpload(event) {
 
     canvas.getContext('2d').clearRect(0, 0, canvas.width, canvas.height);
 
-    faceapi.draw.drawDetections(canvas, detections);
-    faceapi.draw.drawFaceLandmarks(canvas, detections);
-    faceapi.draw.drawFaceExpressions(canvas, detections);
+    faceapi.draw.drawDetections(canvas, resizedDetections);
+    faceapi.draw.drawFaceLandmarks(canvas, resizedDetections);
+    faceapi.draw.drawFaceExpressions(canvas, resizedDetections);
 
     const expressions = detections[0]?.expressions;
     if (expressions) {
