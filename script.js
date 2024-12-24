@@ -1,9 +1,17 @@
 async function loadModels() {
-  await faceapi.nets.ssdMobilenetv1.loadFromUri('models');
-  await faceapi.nets.faceLandmark68Net.loadFromUri('models');
-  await faceapi.nets.faceRecognitionNet.loadFromUri('models');
-  await faceapi.nets.ageGenderNet.loadFromUri('models');
-  await faceapi.nets.faceExpressionNet.loadFromUri('models');
+  try {
+    await faceapi.nets.ssdMobilenetv1.loadFromUri('models');
+    await faceapi.nets.faceLandmark68Net.loadFromUri('models');
+    await faceapi.nets.faceRecognitionNet.loadFromUri('models');
+    await faceapi.nets.ageGenderNet.loadFromUri('models');
+    await faceapi.nets.faceExpressionNet.loadFromUri('models');
+    console.log("Models loaded successfully.");
+
+    document.getElementById('imageUpload').disabled = false;
+    document.getElementById('loadingIndicator').style.display = 'none';
+  } catch (error) {
+    console.error("Error loading models:", error);
+  }
 }
 
 async function handleImageUpload(event) {
@@ -11,14 +19,14 @@ async function handleImageUpload(event) {
   if (file) {
     const img = await faceapi.bufferToImage(file);
     const canvasElement = document.querySelector('canvas');
-    
+
     canvasElement.style.display = 'block';
     canvasElement.width = img.width;
     canvasElement.height = img.height;
 
     const canvas = faceapi.createCanvasFromMedia(img);
     canvasElement.replaceWith(canvas);
-    
+
     const detections = await faceapi.detectAllFaces(img)
       .withFaceLandmarks()
       .withFaceExpressions();
