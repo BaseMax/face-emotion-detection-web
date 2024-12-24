@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-US" dir="ltr">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,7 +9,8 @@
 <body>
   <div class="container">
     <h1>Emotion Detection from Image</h1>
-    <input type="file" id="imageUpload" accept="image/*">
+    <input type="file" id="imageUpload" accept="image/*" disabled>
+    <div id="loadingIndicator">Loading models...</div>
     <canvas id="canvas"></canvas>
     <div id="emotionResult"></div>
   </div>
