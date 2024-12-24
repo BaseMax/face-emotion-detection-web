@@ -1,47 +1,50 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
 body {
   font-family: Arial, sans-serif;
-  background-color: #f7f7f7;
+  margin: 0;
+  padding: 0;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
+  background-color: #f4f4f9;
+  color: #333;
 }
 
 .container {
   text-align: center;
   padding: 20px;
-  background-color: #fff;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  max-width: 400px;
+  border-radius: 10px;
+  background-color: white;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+  max-width: 500px;
+  width: 100%;
 }
 
 h1 {
-  margin-bottom: 20px;
-  color: #333;
-}
-
-input[type="file"] {
-  padding: 10px;
-  border: 2px solid #ccc;
-  border-radius: 4px;
+  font-size: 24px;
   margin-bottom: 20px;
 }
 
-canvas {
-  display: none;
-  max-width: 100%;
+#imageUpload {
+  margin-bottom: 20px;
+}
+
+#canvas {
   margin-top: 20px;
+  display: none;
+  border: 1px solid #ccc;
+  max-width: 100%;
 }
 
 #emotionResult {
   margin-top: 20px;
   font-size: 18px;
   font-weight: bold;
+}
+
+#loadingIndicator {
+  font-size: 18px;
+  color: #007bff;
+  font-weight: bold;
+  margin-top: 20px;
 }
